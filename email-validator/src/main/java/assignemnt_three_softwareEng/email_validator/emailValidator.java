@@ -5,27 +5,39 @@ import java.util.regex.Pattern;
  * method for checking invalid email inputs
  *
  */
+/**
+ * method for checking invalid email inputs
+ *
+ */
 public class emailValidator {
-
-
-	private Pattern pattern;
-	private Matcher matcher;
-
-	private static final String EMAIL_PATTERN =
-		"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@";
-
-	public emailValidator() {
-		pattern = Pattern.compile(EMAIL_PATTERN);
+	
+	public  int validateThEmail(String email){
+		
+	
+		
+		int count = 0, count2=0;
+		
+		
+			if (email.contains(".")){
+				count++ ;
+			}
+				
+				
+				
+			for (int i=0; i<email.length(); i++){
+				
+				
+				if (email.charAt(i) == '@'){
+				count2++; 
+				
+					if(count2==1){
+					count++;
+					 }
+				
+				 }
+			}
+			return count;	
+				
 	}
 
-	/**
-	 * validiate method set the hex and return the match
-	 */
-	public boolean validate(final String hex) {
-
-		matcher = pattern.matcher(hex);
-		return matcher.matches();
-
-	}
 }
-
